@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalakriti - Indian Handicrafts Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Home Screen -->
+    <div id="homeScreen" class="screen active">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-name">Kalakriti</h1>
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search handicrafts, artisans...">
+                </div>
+            </div>
+            <p class="tagline">Reviving India's Heritage through Art &amp; Technology</p>
+        </header>
+
+        <main class="main-content">
+            <section class="regional-collections">
+                <h2 class="section-title">Regional Collections</h2>
+                <div class="horizontal-scroll">
+                    <div class="region-card" data-region="Rajasthan">
+                        <div class="region-pattern rajasthan-pattern"></div>
+                        <h3>Rajasthan</h3>
+                    </div>
+                    <div class="region-card" data-region="Kerala">
+                        <div class="region-pattern kerala-pattern"></div>
+                        <h3>Kerala</h3>
+                    </div>
+                    <div class="region-card" data-region="Gujarat">
+                        <div class="region-pattern gujarat-pattern"></div>
+                        <h3>Gujarat</h3>
+                    </div>
+                    <div class="region-card" data-region="Tamil Nadu">
+                        <div class="region-pattern tamil-pattern"></div>
+                        <h3>Tamil Nadu</h3>
+                    </div>
+                    <div class="region-card" data-region="Odisha">
+                        <div class="region-pattern odisha-pattern"></div>
+                        <h3>Odisha</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trending-section">
+                <h2 class="section-title">Trending Artworks</h2>
+                <div id="trendingProducts" class="product-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Explore Screen -->
+    <div id="exploreScreen" class="screen">
+        <header class="header">
+            <h1 class="page-title">Explore</h1>
+        </header>
+
+        <div class="filters-section">
+            <div class="filter-group">
+                <label class="filter-label">Material</label>
+                <div class="filter-chips">
+                    <button class="filter-chip" data-material="all">All</button>
+                    <button class="filter-chip" data-material="Clay">Clay</button>
+                    <button class="filter-chip" data-material="Wood">Wood</button>
+                    <button class="filter-chip" data-material="Brass">Brass</button>
+                    <button class="filter-chip" data-material="Textile">Textile</button>
+                    <button class="filter-chip" data-material="Canvas">Canvas</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">Price Range</label>
+                <div class="price-range">
+                    <input type="range" id="priceRange" min="0" max="10000" value="10000" step="500">
+                    <span id="priceValue">₹0 - ₹10,000</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-count" id="productCount"></div>
+        <div id="exploreProducts" class="product-grid"></div>
+    </div>
+
+    <!-- Product Detail Screen -->
+    <div id="productDetailScreen" class="screen">
+        <div class="back-button" onclick="navigateBack()">
+            <span>←</span> Back
+        </div>
+        <div id="productDetail" class="product-detail-content"></div>
+    </div>
+
+    <!-- Artisans Screen -->
+    <div id="artisansScreen" class="screen">
+        <header class="header">
+            <h1 class="page-title">Featured Artisans</h1>
+        </header>
+        <div id="artisansList" class="artisans-list"></div>
+    </div>
+
+    <!-- Artisan Detail Screen -->
+    <div id="artisanDetailScreen" class="screen">
+        <div class="back-button" onclick="navigateBack()">
+            <span>←</span> Back
+        </div>
+        <div id="artisanDetail" class="artisan-detail-content"></div>
+    </div>
+
+    <!-- Cart Screen -->
+    <div id="cartScreen" class="screen">
+        <header class="header">
+            <h1 class="page-title">Shopping Cart</h1>
+        </header>
+        <div id="cartContent" class="cart-content"></div>
+    </div>
+
+    <!-- Checkout Screen -->
+    <div id="checkoutScreen" class="screen">
+        <div class="back-button" onclick="navigateBack()">
+            <span>←</span> Back
+        </div>
+        <div class="checkout-content">
+            <h2>Checkout</h2>
+            <div class="order-summary" id="checkoutSummary"></div>
+            
+            <div class="checkout-section">
+                <h3>Delivery Address</h3>
+                <form class="checkout-form">
+                    <input type="text" placeholder="Full Name" class="form-control">
+                    <input type="text" placeholder="Address Line 1" class="form-control">
+                    <input type="text" placeholder="Address Line 2" class="form-control">
+                    <div class="form-row">
+                        <input type="text" placeholder="City" class="form-control">
+                        <input type="text" placeholder="Pincode" class="form-control">
+                    </div>
+                </form>
+            </div>
+
+            <div class="checkout-section">
+                <label class="checkbox-label">
+                    <input type="checkbox" checked>
+                    <span>🌿 Eco-Friendly Sustainable Packaging</span>
+                </label>
+                <p class="info-text">✓ Verified Delivery Partners</p>
+            </div>
+
+            <div class="checkout-section">
+                <h3>Payment Method</h3>
+                <div class="payment-options">
+                    <button class="payment-btn">💳 Credit/Debit Card</button>
+                    <button class="payment-btn">₹ UPI</button>
+                    <button class="payment-btn">💰 Digital Wallet</button>
+                </div>
+            </div>
+
+            <button class="btn-primary btn-full" onclick="alert('Order completed! This is a demo.')">Complete Order</button>
+        </div>
+    </div>
+
+    <!-- Profile Screen -->
+    <div id="profileScreen" class="screen">
+        <header class="header">
+            <h1 class="page-title">Profile</h1>
+        </header>
+        <div class="profile-content">
+            <div class="profile-section">
+                <div class="profile-avatar">👤</div>
+                <h3>John Doe</h3>
+                <p>john.doe@example.com</p>
+                <p>+91 98765 43210</p>
+                <button class="btn-secondary">Edit Profile</button>
+            </div>
+
+            <div class="profile-menu">
+                <div class="menu-item" onclick="showOrders()">
+                    <span>📦</span>
+                    <span>My Orders</span>
+                </div>
+                <div class="menu-item" onclick="showWishlist()">
+                    <span>❤️</span>
+                    <span>Saved Items</span>
+                </div>
+                <div class="menu-item" onclick="showChatHistory()">
+                    <span>💬</span>
+                    <span>Chat History</span>
+                </div>
+                <div class="menu-item">
+                    <span>🔔</span>
+                    <span>Notifications</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="menu-item" onclick="alert('Logged out! This is a demo.')">
+                    <span>🚪</span>
+                    <span>Logout</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Screen -->
+    <div id="chatScreen" class="screen">
+        <div class="back-button" onclick="navigateBack()">
+            <span>←</span> Back
+        </div>
+        <div class="chat-content">
+            <div class="chat-header" id="chatHeader"></div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input-container">
+                <button class="icon-btn">📞 Call Artisan</button>
+                <input type="text" placeholder="Type a message..." class="chat-input">
+                <button class="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Order Modal -->
+    <div id="customOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Custom Order Form</h3>
+                <span class="close-modal" onclick="closeCustomOrderModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <textarea placeholder="Describe your desired item..." class="form-control" rows="4"></textarea>
+                <button class="btn-secondary btn-full">📷 Upload Image</button>
+                <select class="form-control">
+                    <option>Select Material</option>
+                    <option>Clay</option>
+                    <option>Wood</option>
+                    <option>Brass</option>
+                    <option>Textile</option>
+                    <option>Canvas</option>
+                </select>
+                <input type="text" placeholder="Budget Range (e.g., ₹2000-₹5000)" class="form-control">
+                <input type="text" placeholder="Delivery Timeline (e.g., 2 weeks)" class="form-control">
+                <button class="btn-primary btn-full" onclick="submitCustomOrder()">Submit Custom Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-screen="homeScreen">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-btn" data-screen="exploreScreen">
+            <span class="nav-icon">🔍</span>
+            <span class="nav-label">Explore</span>
+        </button>
+        <button class="nav-btn" data-screen="artisansScreen">
+            <span class="nav-icon">👥</span>
+            <span class="nav-label">Artisans</span>
+        </button>
+        <button class="nav-btn" data-screen="cartScreen">
+            <span class="nav-icon">🛍️</span>
+            <span class="nav-label">Cart</span>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="nav-btn" data-screen="profileScreen">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </button>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
